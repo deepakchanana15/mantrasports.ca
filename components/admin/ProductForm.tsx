@@ -158,6 +158,10 @@ function ProductFormContent({ product, categories }: ProductFormProps) {
     setImages((prev) => prev.map((img, i) => ({ ...img, isPrimary: i === idx })))
   }
 
+  const setAltText = (idx: number, value: string) => {
+    setImages((prev) => prev.map((img, i) => (i === idx ? { ...img, altText: value } : img)))
+  }
+
   // ── Submit ──────────────────────────────────────────────────────────────────
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -316,7 +320,7 @@ function ProductFormContent({ product, categories }: ProductFormProps) {
 
             {/* Image grid */}
             {images.length > 0 && (
-              <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 lg:grid-cols-5">
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
                 {images.map((img, idx) => (
                   <div key={img.url + idx} className="group relative">
                     <div className={`relative overflow-hidden rounded border-2 ${img.isPrimary ? 'border-brand-500' : 'border-neutral-200'}`}>
@@ -332,28 +336,35 @@ function ProductFormContent({ product, categories }: ProductFormProps) {
                           Primary
                         </span>
                       )}
-                    </div>
-                    {/* Actions */}
-                    <div className="absolute inset-0 flex items-center justify-center gap-1 rounded opacity-0 transition-opacity group-hover:opacity-100" style={{ background: 'rgba(0,0,0,0.45)' }}>
-                      {!img.isPrimary && (
+                      {/* Actions */}
+                      <div className="absolute inset-0 flex items-center justify-center gap-1 opacity-0 transition-opacity group-hover:opacity-100" style={{ background: 'rgba(0,0,0,0.45)' }}>
+                        {!img.isPrimary && (
+                          <button
+                            type="button"
+                            onClick={() => setPrimary(idx)}
+                            title="Set as primary"
+                            className="rounded bg-white p-1 text-neutral-700 hover:text-brand-600"
+                          >
+                            <Star className="h-3.5 w-3.5" />
+                          </button>
+                        )}
                         <button
                           type="button"
-                          onClick={() => setPrimary(idx)}
-                          title="Set as primary"
-                          className="rounded bg-white p-1 text-neutral-700 hover:text-brand-600"
+                          onClick={() => removeImage(idx)}
+                          title="Remove"
+                          className="rounded bg-white p-1 text-neutral-700 hover:text-red-600"
                         >
-                          <Star className="h-3.5 w-3.5" />
+                          <X className="h-3.5 w-3.5" />
                         </button>
-                      )}
-                      <button
-                        type="button"
-                        onClick={() => removeImage(idx)}
-                        title="Remove"
-                        className="rounded bg-white p-1 text-neutral-700 hover:text-red-600"
-                      >
-                        <X className="h-3.5 w-3.5" />
-                      </button>
+                      </div>
                     </div>
+                    <input
+                      type="text"
+                      value={img.altText}
+                      onChange={(e) => setAltText(idx, e.target.value)}
+                      placeholder="Describe this image (alt text)"
+                      className="mt-1.5 w-full rounded border border-neutral-300 bg-white px-2 py-1 text-xs text-neutral-900 outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500"
+                    />
                   </div>
                 ))}
               </div>
@@ -361,6 +372,11 @@ function ProductFormContent({ product, categories }: ProductFormProps) {
 
             {images.length === 0 && !uploading && (
               <p className="text-sm text-neutral-400">No images yet. Upload at least one.</p>
+            )}
+            {images.length > 0 && (
+              <p className="mt-2 text-xs text-neutral-400">
+                Describe each image specifically (e.g. &quot;side profile showing edge thickness&quot;) rather than repeating the product name — this helps with image search and accessibility.
+              </p>
             )}
           </div>
 
