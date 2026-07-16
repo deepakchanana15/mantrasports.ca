@@ -162,4 +162,6 @@ export const DEFAULT_SITE_SETTINGS = {
   footer_text: `© ${new Date().getFullYear()} Mantra Sports. All rights reserved.`,
   meta_title: SITE_CONFIG.seo.defaultTitle,
   meta_description: SITE_CONFIG.seo.defaultDescription,
+  legal_business_name: 'Mantra Sports CA',
+  legal_governing_region: 'Ontario, Canada',
 } as const

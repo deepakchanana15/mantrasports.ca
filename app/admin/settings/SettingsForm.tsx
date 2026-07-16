@@ -97,6 +97,10 @@ const FIELDS = [
   { section: 'Footer', items: [
     { key: 'footer_text', label: 'Footer Copyright Text', type: 'text', placeholder: '© 2025 Mantra Sports. All rights reserved.' },
   ]},
+  { section: 'Legal', items: [
+    { key: 'legal_business_name', label: 'Registered Business Name (shown on Privacy Policy & Terms)', type: 'text', placeholder: 'Mantra Sports Corporation' },
+    { key: 'legal_governing_region', label: 'Governing Law Region', type: 'text', placeholder: 'Ontario, Canada' },
+  ]},
 ]
 
 export function SettingsForm({
