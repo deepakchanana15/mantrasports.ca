@@ -56,6 +56,8 @@ interface Props {
     willow: ProductDisplay[]
     sale: ProductDisplay[]
   }
+  freeShippingThreshold: string
+  returnWindowDays: string
 }
 
 // ── Static data ───────────────────────────────────────────────────────────────
@@ -87,20 +89,24 @@ const CATEGORIES = [
   { name: 'Custom Apparel', slug: 'custom-apparel', emoji: '👕', href: '/categories/custom-apparel' },
 ]
 
-const TRUST_ITEMS = [
-  { icon: Truck, text: 'Free shipping over $150' },
-  { icon: ShieldCheck, text: 'Secure payments & privacy' },
-  { icon: RefreshCw, text: '30-day return policy' },
-  { icon: Award, text: 'Authentic premium quality' },
-  { icon: Headphones, text: 'Personal customer service' },
-]
+function getTrustItems(freeShippingThreshold: string, returnWindowDays: string) {
+  return [
+    { icon: Truck, text: `Free shipping over $${freeShippingThreshold}` },
+    { icon: ShieldCheck, text: 'Secure payments & privacy' },
+    { icon: RefreshCw, text: `${returnWindowDays}-day return policy` },
+    { icon: Award, text: 'Authentic premium quality' },
+    { icon: Headphones, text: 'Personal customer service' },
+  ]
+}
 
-const WHY_ITEMS = [
-  { icon: Award, title: 'Premium Quality', text: 'Every bat handcrafted from the finest English willow. Craftsmanship you feel on the field.' },
-  { icon: Package, title: 'Wholesale & B2B', text: 'Flexible wholesale pricing for clubs, schools and dealers. Partnerships that scale.' },
-  { icon: Truck, title: 'Canada-Wide Shipping', text: 'Fast delivery across Canada. Free shipping on orders over $150.' },
-  { icon: Headphones, title: 'Expert Advice', text: 'Our expert team helps you find the perfect equipment for your playing level.' },
-]
+function getWhyItems(freeShippingThreshold: string) {
+  return [
+    { icon: Award, title: 'Premium Quality', text: 'Every bat handcrafted from the finest English willow. Craftsmanship you feel on the field.' },
+    { icon: Package, title: 'Wholesale & B2B', text: 'Flexible wholesale pricing for clubs, schools and dealers. Partnerships that scale.' },
+    { icon: Truck, title: 'Canada-Wide Shipping', text: `Fast delivery across Canada. Free shipping on orders over $${freeShippingThreshold}.` },
+    { icon: Headphones, title: 'Expert Advice', text: 'Our expert team helps you find the perfect equipment for your playing level.' },
+  ]
+}
 
 const REVIEWS = [
   { name: 'Rahul M.', location: 'Toronto, ON', rating: 5, text: 'Absolutely impressive quality! The Magnitude Legend plays like a professional-grade bat. Delivery was fast and the packaging was perfect. Highly recommend!', product: 'Magnitude Legend Bat' },
@@ -257,7 +263,9 @@ function ProductCard({ product }: { product: CardProduct }) {
 
 // ── Main component ────────────────────────────────────────────────────────────
 
-export function HomePageClient({ heroImageUrl, heroProduct, willowImageUrl, categories, tabProducts }: Props) {
+export function HomePageClient({ heroImageUrl, heroProduct, willowImageUrl, categories, tabProducts, freeShippingThreshold, returnWindowDays }: Props) {
+  const TRUST_ITEMS = getTrustItems(freeShippingThreshold, returnWindowDays)
+  const WHY_ITEMS = getWhyItems(freeShippingThreshold)
   const [activeTab, setActiveTab] = useState('new')
   const [email, setEmail] = useState('')
   const [newsletterSent, setNewsletterSent] = useState(false)

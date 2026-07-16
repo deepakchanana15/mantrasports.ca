@@ -101,6 +101,13 @@ const FIELDS = [
     { key: 'legal_business_name', label: 'Registered Business Name (shown on Privacy Policy & Terms)', type: 'text', placeholder: 'Mantra Sports Corporation' },
     { key: 'legal_governing_region', label: 'Governing Law Region', type: 'text', placeholder: 'Ontario, Canada' },
   ]},
+  { section: 'Shipping & Returns', items: [
+    { key: 'shipping_processing_time', label: 'Order Processing Time', type: 'text', placeholder: '1-2 business days' },
+    { key: 'shipping_delivery_time', label: 'Delivery Time', type: 'text', placeholder: '3-7 business days' },
+    { key: 'free_shipping_threshold', label: 'Free Shipping Threshold (CAD, numbers only)', type: 'text', placeholder: '150' },
+    { key: 'return_window_days', label: 'Return Window (days, numbers only)', type: 'text', placeholder: '30' },
+    { key: 'response_time_hours', label: 'Typical Enquiry Response Time (hours, numbers only)', type: 'text', placeholder: '24' },
+  ]},
 ]
 
 export function SettingsForm({

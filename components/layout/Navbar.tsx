@@ -30,7 +30,7 @@ function LogoMark({ className }: { className?: string }) {
   )
 }
 
-export function Navbar() {
+export function Navbar({ freeShippingThreshold = '150' }: { freeShippingThreshold?: string }) {
   const pathname = usePathname()
   const [isMobileOpen, setIsMobileOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
@@ -64,7 +64,7 @@ export function Navbar() {
         style={{ background: '#111111' }}
         className="py-[9px] px-4 text-center text-[12px] font-medium tracking-[0.08em] text-white"
       >
-        🏏 Free Shipping over $150 &nbsp;|&nbsp; Code{' '}
+        🏏 Free Shipping over ${freeShippingThreshold} &nbsp;|&nbsp; Code{' '}
         <strong>WELCOME5</strong> for 5% off
         <Link
           href="/shop"

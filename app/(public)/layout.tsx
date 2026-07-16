@@ -3,6 +3,7 @@ import { Footer } from '@/components/layout/Footer'
 import { WhatsAppButton } from '@/components/layout/WhatsAppButton'
 import { CookieBanner } from '@/components/layout/CookieBanner'
 import { prisma } from '@/lib/db/prisma'
+import { getSiteSettings } from '@/lib/utils/settings'
 
 export default async function PublicLayout({ children }: { children: React.ReactNode }) {
   let contactEmail: string | undefined
@@ -13,6 +14,8 @@ export default async function PublicLayout({ children }: { children: React.React
     // fall through to default
   }
 
+  const { free_shipping_threshold } = await getSiteSettings(['free_shipping_threshold'])
+
   return (
     <>
       {/* Skip to main content */}
@@ -20,7 +23,7 @@ export default async function PublicLayout({ children }: { children: React.React
         Skip to main content
       </a>
 
-      <Navbar />
+      <Navbar freeShippingThreshold={free_shipping_threshold} />
 
       <main id="main-content" tabIndex={-1}>
         {children}

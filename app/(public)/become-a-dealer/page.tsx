@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Store, Percent, Headphones, ChevronRight } from 'lucide-react'
 import { WholesaleForm } from '../wholesale/WholesaleForm'
+import { getSiteSettings } from '@/lib/utils/settings'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Become a Dealer — Mantra Sports CA',
@@ -26,7 +29,9 @@ const PERKS = [
   },
 ]
 
-export default function BecomeADealerPage() {
+export default async function BecomeADealerPage() {
+  const { response_time_hours } = await getSiteSettings(['response_time_hours'])
+
   return (
     <div className="bg-white">
       <div style={{ borderBottom: '1px solid #E0DFDB', padding: '12px 60px', background: '#F8F7F4' }}>
@@ -85,7 +90,7 @@ export default function BecomeADealerPage() {
           </div>
 
           <div>
-            <WholesaleForm />
+            <WholesaleForm responseTimeHours={response_time_hours} />
           </div>
         </div>
       </div>

@@ -1,13 +1,19 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
+import { getSiteSettings } from '@/lib/utils/settings'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Shipping Policy — Mantra Sports CA',
   description: 'Shipping rates, delivery times and order tracking information for Mantra Sports Canada.',
 }
 
-export default function ShippingPolicyPage() {
+export default async function ShippingPolicyPage() {
+  const { shipping_processing_time, shipping_delivery_time, free_shipping_threshold } =
+    await getSiteSettings(['shipping_processing_time', 'shipping_delivery_time', 'free_shipping_threshold'])
+
   return (
     <div className="bg-white">
       <div style={{ borderBottom: '1px solid #E0DFDB', padding: '12px 60px', background: '#F8F7F4' }}>
@@ -37,21 +43,21 @@ export default function ShippingPolicyPage() {
             <h2 className="mb-2 font-display text-[16px] font-bold uppercase tracking-[0.04em]" style={{ color: '#111111' }}>
               Processing Time
             </h2>
-            <p>Orders are typically processed and shipped within 1-2 business days of payment confirmation. Custom or made-to-order items may take longer — estimated timelines are noted on the relevant product page.</p>
+            <p>Orders are typically processed and shipped within {shipping_processing_time} of payment confirmation. Custom or made-to-order items may take longer — estimated timelines are noted on the relevant product page.</p>
           </section>
 
           <section>
             <h2 className="mb-2 font-display text-[16px] font-bold uppercase tracking-[0.04em]" style={{ color: '#111111' }}>
               Delivery Times
             </h2>
-            <p>Standard delivery within Canada typically takes 3-7 business days depending on your location. Remote or rural areas may take longer. You&apos;ll receive a tracking number by email once your order ships.</p>
+            <p>Standard delivery within Canada typically takes {shipping_delivery_time} depending on your location. Remote or rural areas may take longer. You&apos;ll receive a tracking number by email once your order ships.</p>
           </section>
 
           <section>
             <h2 className="mb-2 font-display text-[16px] font-bold uppercase tracking-[0.04em]" style={{ color: '#111111' }}>
               Shipping Rates
             </h2>
-            <p>Orders over $150 CAD ship free within Canada. Orders under this threshold are charged a flat shipping rate, calculated at checkout based on your delivery address.</p>
+            <p>Orders over ${free_shipping_threshold} CAD ship free within Canada. Orders under this threshold are charged a flat shipping rate, calculated at checkout based on your delivery address.</p>
           </section>
 
           <section>

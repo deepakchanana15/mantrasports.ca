@@ -1,13 +1,18 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
+import { getSiteSettings } from '@/lib/utils/settings'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'Returns Policy — Mantra Sports CA',
-  description: 'Our 30-day returns policy, exchange process, and warranty information for Mantra Sports Canada.',
+  description: 'Our returns policy, exchange process, and warranty information for Mantra Sports Canada.',
 }
 
-export default function ReturnsPolicyPage() {
+export default async function ReturnsPolicyPage() {
+  const { return_window_days } = await getSiteSettings(['return_window_days'])
+
   return (
     <div className="bg-white">
       <div style={{ borderBottom: '1px solid #E0DFDB', padding: '12px 60px', background: '#F8F7F4' }}>
@@ -34,9 +39,9 @@ export default function ReturnsPolicyPage() {
         <div className="space-y-8 text-[15px] leading-[1.85]" style={{ color: '#333333' }}>
           <section>
             <h2 className="mb-2 font-display text-[16px] font-bold uppercase tracking-[0.04em]" style={{ color: '#111111' }}>
-              30-Day Return Window
+              {return_window_days}-Day Return Window
             </h2>
-            <p>We accept returns within 30 days of delivery for unused items in their original condition and packaging, with proof of purchase.</p>
+            <p>We accept returns within {return_window_days} days of delivery for unused items in their original condition and packaging, with proof of purchase.</p>
           </section>
 
           <section>

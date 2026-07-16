@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { prisma } from '@/lib/db/prisma'
 import { HomePageClient } from '@/components/home/HomePageClient'
 import type { CategoryDisplay, ProductDisplay, HeroProduct } from '@/components/home/HomePageClient'
+import { getSiteSettings } from '@/lib/utils/settings'
 
 export const metadata: Metadata = {
   title: 'Mantra Sports CA — Premium Cricket Equipment',
@@ -160,6 +161,11 @@ export default async function HomePage() {
     // DB unavailable — render with placeholder / static data
   }
 
+  const { free_shipping_threshold, return_window_days } = await getSiteSettings([
+    'free_shipping_threshold',
+    'return_window_days',
+  ])
+
   return (
     <HomePageClient
       heroImageUrl={heroImageUrl}
@@ -167,6 +173,8 @@ export default async function HomePage() {
       willowImageUrl={willowImageUrl}
       categories={categories}
       tabProducts={tabProducts}
+      freeShippingThreshold={free_shipping_threshold}
+      returnWindowDays={return_window_days}
     />
   )
 }

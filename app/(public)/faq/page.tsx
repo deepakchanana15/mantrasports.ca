@@ -1,76 +1,94 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ChevronRight, ChevronDown } from 'lucide-react'
+import { getSiteSettings } from '@/lib/utils/settings'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'FAQ — Mantra Sports CA',
   description: 'Answers to common questions about ordering, shipping, returns and wholesale at Mantra Sports Canada.',
 }
 
-const FAQS: { category: string; items: { q: string; a: string }[] }[] = [
-  {
-    category: 'Orders & Products',
-    items: [
-      {
-        q: 'What grade of English willow do you use?',
-        a: 'Our premium range uses Grade I–III English willow, hand-selected and finished by experienced bat makers. Grade and finish details are listed on each product page.',
-      },
-      {
-        q: 'Do you sell Kashmir willow bats too?',
-        a: 'Yes — alongside our English willow range, we stock Kashmir willow bats for players looking for a more budget-friendly option without sacrificing durability.',
-      },
-      {
-        q: 'Can I get a custom weight or grip on a bat?',
-        a: 'Some bats support custom weight and grip selection at checkout. For fully custom requests, reach out via our Contact page and our team will confirm what’s possible.',
-      },
-    ],
-  },
-  {
-    category: 'Shipping',
-    items: [
-      {
-        q: 'How long does delivery take?',
-        a: 'Most orders ship within 1-2 business days and arrive within 3-7 business days depending on your location in Canada. See our Shipping Policy for full details.',
-      },
-      {
-        q: 'Do you offer free shipping?',
-        a: 'Yes — orders over $150 CAD ship free within Canada. Orders under that threshold have a flat shipping rate calculated at checkout.',
-      },
-      {
-        q: 'Do you ship outside Canada?',
-        a: 'We currently focus on Canada-wide delivery. If you need equipment shipped internationally, contact us and we’ll see what we can arrange.',
-      },
-    ],
-  },
-  {
-    category: 'Returns & Warranty',
-    items: [
-      {
-        q: 'What is your return policy?',
-        a: 'We offer a 30-day return policy on unused items in original condition. See our Returns Policy page for the full process and exceptions.',
-      },
-      {
-        q: 'What if my bat arrives damaged?',
-        a: 'Contact us within 48 hours of delivery with photos of the damage and we’ll arrange a replacement or refund at no cost to you.',
-      },
-    ],
-  },
-  {
-    category: 'Wholesale & Teams',
-    items: [
-      {
-        q: 'Do you offer wholesale pricing for clubs and schools?',
-        a: 'Yes — we work with cricket clubs, schools, academies and retailers on volume pricing. Visit our Wholesale page to submit an enquiry.',
-      },
-      {
-        q: 'Can you supply custom team apparel?',
-        a: 'Yes, custom apparel with team branding is available for bulk orders. Let us know your requirements through the wholesale enquiry form.',
-      },
-    ],
-  },
-]
+function buildFaqs(settings: {
+  shipping_processing_time: string
+  shipping_delivery_time: string
+  free_shipping_threshold: string
+  return_window_days: string
+}): { category: string; items: { q: string; a: string }[] }[] {
+  return [
+    {
+      category: 'Orders & Products',
+      items: [
+        {
+          q: 'What grade of English willow do you use?',
+          a: 'Our premium range uses Grade I–III English willow, hand-selected and finished by experienced bat makers. Grade and finish details are listed on each product page.',
+        },
+        {
+          q: 'Do you sell Kashmir willow bats too?',
+          a: 'Yes — alongside our English willow range, we stock Kashmir willow bats for players looking for a more budget-friendly option without sacrificing durability.',
+        },
+        {
+          q: 'Can I get a custom weight or grip on a bat?',
+          a: 'Some bats support custom weight and grip selection at checkout. For fully custom requests, reach out via our Contact page and our team will confirm what’s possible.',
+        },
+      ],
+    },
+    {
+      category: 'Shipping',
+      items: [
+        {
+          q: 'How long does delivery take?',
+          a: `Most orders ship within ${settings.shipping_processing_time} and arrive within ${settings.shipping_delivery_time} depending on your location in Canada. See our Shipping Policy for full details.`,
+        },
+        {
+          q: 'Do you offer free shipping?',
+          a: `Yes — orders over $${settings.free_shipping_threshold} CAD ship free within Canada. Orders under that threshold have a flat shipping rate calculated at checkout.`,
+        },
+        {
+          q: 'Do you ship outside Canada?',
+          a: 'We currently focus on Canada-wide delivery. If you need equipment shipped internationally, contact us and we’ll see what we can arrange.',
+        },
+      ],
+    },
+    {
+      category: 'Returns & Warranty',
+      items: [
+        {
+          q: 'What is your return policy?',
+          a: `We offer a ${settings.return_window_days}-day return policy on unused items in original condition. See our Returns Policy page for the full process and exceptions.`,
+        },
+        {
+          q: 'What if my bat arrives damaged?',
+          a: 'Contact us within 48 hours of delivery with photos of the damage and we’ll arrange a replacement or refund at no cost to you.',
+        },
+      ],
+    },
+    {
+      category: 'Wholesale & Teams',
+      items: [
+        {
+          q: 'Do you offer wholesale pricing for clubs and schools?',
+          a: 'Yes — we work with cricket clubs, schools, academies and retailers on volume pricing. Visit our Wholesale page to submit an enquiry.',
+        },
+        {
+          q: 'Can you supply custom team apparel?',
+          a: 'Yes, custom apparel with team branding is available for bulk orders. Let us know your requirements through the wholesale enquiry form.',
+        },
+      ],
+    },
+  ]
+}
 
-export default function FaqPage() {
+export default async function FaqPage() {
+  const settings = await getSiteSettings([
+    'shipping_processing_time',
+    'shipping_delivery_time',
+    'free_shipping_threshold',
+    'return_window_days',
+  ])
+  const FAQS = buildFaqs(settings)
+
   return (
     <div className="bg-white">
       {/* Breadcrumb */}

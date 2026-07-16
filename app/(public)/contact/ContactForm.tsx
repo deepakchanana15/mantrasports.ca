@@ -7,7 +7,7 @@ import { submitEnquiry } from '@/lib/actions/enquiries'
 const inputCls =
   'w-full rounded-[2px] border border-neutral-300 bg-white px-4 py-3 text-[14px] text-neutral-900 outline-none transition-colors focus:border-[#e85d1a] focus:ring-1 focus:ring-[#e85d1a] placeholder:text-neutral-400'
 
-export function ContactForm() {
+export function ContactForm({ responseTimeHours = '24' }: { responseTimeHours?: string }) {
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
@@ -43,7 +43,7 @@ export function ContactForm() {
           Message Received!
         </h3>
         <p className="max-w-[360px] text-[15px] leading-relaxed" style={{ color: '#6B6B6B' }}>
-          Thanks for reaching out. We&apos;ll get back to you as soon as possible — typically within 24 hours.
+          Thanks for reaching out. We&apos;ll get back to you as soon as possible — typically within {responseTimeHours} hours.
         </p>
         <p className="mt-4 font-display text-[13px] font-semibold uppercase tracking-wider" style={{ color: '#e85d1a' }}>
           Mantra Sports CA Team

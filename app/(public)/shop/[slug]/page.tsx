@@ -7,6 +7,7 @@ import { formatPrice, calculateDiscount } from '@/lib/utils/format'
 import { ImageGallery } from '@/components/shop/ImageGallery'
 import { ProductCard } from '@/components/shop/ProductCard'
 import { getProductWhatsAppUrl } from '@/lib/config/site'
+import { getSiteSettings } from '@/lib/utils/settings'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -35,6 +36,7 @@ const STOCK_INFO: Record<string, { label: string; icon: typeof Check; cls: strin
 
 export default async function ProductDetailPage({ params }: Props) {
   const { slug } = await params
+  const { response_time_hours } = await getSiteSettings(['response_time_hours'])
 
   let product: any = null
   let related: any[] = []
@@ -263,7 +265,7 @@ export default async function ProductDetailPage({ params }: Props) {
             </div>
 
             <p className="mt-3 text-center text-xs text-[#999]">
-              We typically respond within 24 hours.
+              We typically respond within {response_time_hours} hours.
             </p>
 
             {/* Tags */}

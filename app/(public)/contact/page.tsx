@@ -4,6 +4,7 @@ import { Mail, Phone, MapPin, Clock, ChevronRight, MessageCircle } from 'lucide-
 import { ContactForm } from './ContactForm'
 import { prisma } from '@/lib/db/prisma'
 import { SITE_CONFIG } from '@/lib/config/site'
+import { getSiteSettings } from '@/lib/utils/settings'
 
 export const dynamic = 'force-dynamic'
 
@@ -36,6 +37,8 @@ export default async function ContactPage() {
   const hasPhone = phone && phone !== 'TO_BE_PROVIDED'
   const hasAddress = address && address !== 'TO_BE_PROVIDED'
   const hasWhatsApp = whatsapp && whatsapp !== 'TO_BE_PROVIDED'
+
+  const { response_time_hours } = await getSiteSettings(['response_time_hours'])
 
   return (
     <div className="bg-white">
@@ -209,7 +212,7 @@ export default async function ContactPage() {
                   Response Time
                 </p>
                 <p className="text-[13px]" style={{ color: '#6B6B6B' }}>
-                  We typically respond within <strong>24 hours</strong> on business days.
+                  We typically respond within <strong>{response_time_hours} hours</strong> on business days.
                 </p>
               </div>
             </div>
@@ -237,7 +240,7 @@ export default async function ContactPage() {
 
           {/* Right — form */}
           <div>
-            <ContactForm />
+            <ContactForm responseTimeHours={response_time_hours} />
           </div>
         </div>
       </div>

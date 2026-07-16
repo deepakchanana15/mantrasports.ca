@@ -2,6 +2,9 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Handshake, TrendingUp, Package, ChevronRight } from 'lucide-react'
 import { WholesaleForm } from '../wholesale/WholesaleForm'
+import { getSiteSettings } from '@/lib/utils/settings'
+
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
   title: 'B2B Partnerships — Mantra Sports CA',
@@ -26,7 +29,9 @@ const BENEFITS = [
   },
 ]
 
-export default function B2BPage() {
+export default async function B2BPage() {
+  const { response_time_hours } = await getSiteSettings(['response_time_hours'])
+
   return (
     <div className="bg-white">
       <div style={{ borderBottom: '1px solid #E0DFDB', padding: '12px 60px', background: '#F8F7F4' }}>
@@ -81,7 +86,7 @@ export default function B2BPage() {
           </div>
 
           <div>
-            <WholesaleForm />
+            <WholesaleForm responseTimeHours={response_time_hours} />
           </div>
         </div>
       </div>

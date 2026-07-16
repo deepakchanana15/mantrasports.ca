@@ -19,7 +19,7 @@ const PRODUCT_OPTIONS = [
   'Sports Bags & Accessories',
 ]
 
-export function WholesaleForm() {
+export function WholesaleForm({ responseTimeHours = '24' }: { responseTimeHours?: string }) {
   const [submitting, setSubmitting] = useState(false)
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
@@ -57,7 +57,7 @@ export function WholesaleForm() {
           Enquiry Received!
         </h3>
         <p className="max-w-[360px] text-[15px] leading-relaxed" style={{ color: '#6B6B6B' }}>
-          Thanks for your wholesale enquiry. We typically follow up by email or phone within 24 hours.
+          Thanks for your wholesale enquiry. We typically follow up by email or phone within {responseTimeHours} hours.
         </p>
         <p className="mt-4 font-display text-[13px] font-semibold uppercase tracking-wider" style={{ color: '#e85d1a' }}>
           Mantra Sports CA Team

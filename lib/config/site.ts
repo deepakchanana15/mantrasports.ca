@@ -164,4 +164,9 @@ export const DEFAULT_SITE_SETTINGS = {
   meta_description: SITE_CONFIG.seo.defaultDescription,
   legal_business_name: 'Mantra Sports CA',
   legal_governing_region: 'Ontario, Canada',
+  shipping_processing_time: '1-2 business days',
+  shipping_delivery_time: '3-7 business days',
+  free_shipping_threshold: '150',
+  return_window_days: '30',
+  response_time_hours: '24',
 } as const
