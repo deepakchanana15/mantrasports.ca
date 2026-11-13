@@ -21,13 +21,13 @@ const VALUES = [
   },
   {
     icon: Truck,
-    title: 'Coast-to-Coast Delivery',
-    text: 'Fast, reliable shipping to every province, with dedicated support for clubs and schools ordering in bulk.',
+    title: 'Built for Bulk Orders',
+    text: 'Quotes for clubs, schools, academies and retailers outfitting a whole squad, with sizing help before you order.',
   },
   {
     icon: ShieldCheck,
     title: 'Standing Behind Every Order',
-    text: 'Clear stock information, straightforward returns, and a team that actually answers when you reach out.',
+    text: 'Clear stock information, replacement for manufacturing defects, and a team that actually answers when you reach out.',
   },
 ]
 
@@ -62,14 +62,14 @@ export default function AboutPage() {
       {/* Body */}
       <div style={{ padding: '64px 60px', maxWidth: 900, margin: '0 auto' }}>
         <p className="mb-6 text-[16px] leading-[1.9]" style={{ color: '#333333' }}>
-          Mantra Sports brings genuine English willow cricket bats, protective gear, balls and teamwear to players
+          Mantra Sports brings genuine English willow cricket bats, protective gear, balls and performance sportswear to clubs
           across Canada — from weekend club cricketers to school and university teams building out a full kit
           order. We work directly with experienced bat makers to source Grade I–III English willow, so every bat
           that reaches a Canadian crease has been hand-selected and finished properly, not mass-produced.
         </p>
         <p className="mb-6 text-[16px] leading-[1.9]" style={{ color: '#333333' }}>
           Cricket in Canada is growing fast, and equipment shouldn&apos;t be the bottleneck. That&apos;s why we
-          carry a full range — bats, pads, gloves, helmets, balls and custom teamwear — with wholesale pricing
+          carry a full range — bats, pads, gloves, helmets, balls and performance sportswear — with wholesale pricing
           for clubs, schools and dealers who need to outfit a whole squad, not just one player.
         </p>
         <p className="mb-10 text-[16px] leading-[1.9]" style={{ color: '#333333' }}>

@@ -14,8 +14,7 @@ const PRODUCT_OPTIONS = [
   'Batting Gloves',
   'Helmets',
   'Cricket Balls',
-  'Teamwear',
-  'Custom Apparel',
+  'Performance Sportswear',
   'Sports Bags & Accessories',
 ]
 

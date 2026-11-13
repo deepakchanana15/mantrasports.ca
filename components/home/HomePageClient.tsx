@@ -86,16 +86,16 @@ const CATEGORIES = [
   { name: 'Protective Gear', slug: 'protective-gear', emoji: '🛡️', href: '/categories/protective-gear' },
   { name: 'Gloves', slug: 'accessories', emoji: '🧤', href: '/categories/accessories' },
   { name: 'Sports Bags', slug: 'sports-bags', emoji: '🎒', href: '/categories/sports-bags' },
-  { name: 'Custom Apparel', slug: 'custom-apparel', emoji: '👕', href: '/categories/custom-apparel' },
+  { name: 'Performance Sportswear', slug: 'custom-apparel', emoji: '👕', href: '/categories/custom-apparel' },
 ]
 
 function getTrustItems(freeShippingThreshold: string, returnWindowDays: string) {
   return [
-    { icon: Truck, text: `Free shipping over $${freeShippingThreshold}` },
-    { icon: ShieldCheck, text: 'Secure payments & privacy' },
-    { icon: RefreshCw, text: `${returnWindowDays}-day return policy` },
-    { icon: Award, text: 'Authentic premium quality' },
-    { icon: Headphones, text: 'Personal customer service' },
+    { icon: Truck, text: 'Bulk & club orders' },
+    { icon: ShieldCheck, text: 'Manufacturing-defect replacement' },
+    { icon: RefreshCw, text: 'Custom quotes within 1 business day' },
+    { icon: Award, text: 'Genuine English willow' },
+    { icon: Headphones, text: 'Real people, real help' },
   ]
 }
 
@@ -304,7 +304,7 @@ export function HomePageClient({ heroImageUrl, heroProduct, willowImageUrl, cate
         {/* Left — Text */}
         <div className="flex flex-col justify-center" style={{ padding: '80px 60px 80px 80px', borderRight: '1px solid #E0DFDB' }}>
           <span className="mb-7 inline-flex items-center gap-2 self-start rounded-[2px] px-[14px] py-[6px] font-display text-[11px] font-semibold uppercase tracking-[0.18em] text-white" style={{ background: '#e85d1a' }}>
-            🏏 Now in Canada
+            🏏 B2B &amp; Wholesale · Canada
           </span>
 
           <h1 id="hero-heading" className="mb-6 font-display font-bold uppercase leading-[0.93] tracking-[-0.01em]" style={{ fontSize: 'clamp(52px, 7vw, 88px)', color: '#111111' }}>
@@ -312,7 +312,7 @@ export function HomePageClient({ heroImageUrl, heroProduct, willowImageUrl, cate
           </h1>
 
           <p className="mb-10 max-w-[420px] text-[16px] font-light leading-[1.7]" style={{ color: '#6B6B6B' }}>
-            Premium cricket bats, protective gear and teamwear — shipped straight across Canada. Trusted by players nationwide.
+            Wholesale cricket bats, protective gear and performance sportswear for Canadian clubs, academies, schools and retailers. Tell us what your squad needs and we&apos;ll send a quote.
           </p>
 
           <div className="mb-14 flex flex-wrap gap-3">
@@ -329,7 +329,7 @@ export function HomePageClient({ heroImageUrl, heroProduct, willowImageUrl, cate
           </div>
 
           <div className="flex" style={{ borderTop: '1px solid #E0DFDB' }}>
-            {[{ num: '500+', label: 'Customers' }, { num: '50+', label: 'Products' }, { num: 'Coast-to-Coast', label: 'Delivery' }].map((stat, i) => (
+            {[{ num: 'B2B', label: 'Wholesale Only' }, { num: 'Grade I–III', label: 'English Willow' }, { num: 'Bulk', label: 'Club Pricing' }].map((stat, i) => (
               <div key={stat.num} className="flex-1 pt-6" style={{ borderRight: i < 2 ? '1px solid #E0DFDB' : 'none', paddingRight: i < 2 ? '24px' : '0', paddingLeft: i > 0 ? '24px' : '0' }}>
                 <div className="font-display text-[32px] font-semibold leading-none" style={{ color: '#e85d1a' }}>{stat.num}</div>
                 <div className="mt-1 text-[11px] font-medium uppercase tracking-[0.12em]" style={{ color: '#6B6B6B' }}>{stat.label}</div>

@@ -5,8 +5,8 @@ export const SITE_CONFIG = {
   name: 'Mantra Sports CA',
   tagline: 'Performance, Simplified.',
   description:
-    'Mantra Sports CA — Premium cricket bats, protective gear, balls, teamwear and accessories. Built for performance. Trusted worldwide.',
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://mantrasports.ca',
+    'Mantra Sports Canada — wholesale and B2B supply of premium cricket bats, protective gear, balls, performance sportswear and accessories for Canadian clubs, academies, schools and retailers.',
+  url: 'https://www.mantrasports.ca',
   locale: 'en-CA',
   region: 'ca',
   currency: 'CAD',
@@ -14,9 +14,9 @@ export const SITE_CONFIG = {
 
   contact: {
     email: process.env.EMAIL_TO ?? 'info@mantrasports.ca',
-    phone: 'TO_BE_PROVIDED',
+    phone: '+1 (385) 601-3759',
     address: 'TO_BE_PROVIDED',
-    whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? 'TO_BE_PROVIDED',
+    whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '+12679016382',
   },
 
   social: {
@@ -28,9 +28,9 @@ export const SITE_CONFIG = {
 
   seo: {
     titleTemplate: '%s | Mantra Sports CA',
-    defaultTitle: 'Mantra Sports CA — Premium Cricket Equipment',
+    defaultTitle: 'Wholesale Cricket Equipment Canada | Mantra Sports',
     defaultDescription:
-      'Premium cricket bats, protective gear, teamwear and accessories at Mantra Sports Canada. Wholesale & B2B enquiries welcome.',
+      'Wholesale cricket equipment for Canadian clubs, academies, schools and retailers: English willow bats, pads, gloves, helmets, balls and performance sportswear. Request a B2B quote.',
     defaultOgImage: '/images/og-default.jpg',
     twitterHandle: '@mantrasports',
   },
@@ -63,8 +63,7 @@ export const MAIN_NAV: NavItem[] = [
       { label: 'Protective Gear', href: '/categories/protective-gear' },
       { label: 'Balls', href: '/categories/balls' },
       { label: 'Accessories', href: '/categories/accessories' },
-      { label: 'Teamwear', href: '/categories/teamwear' },
-      { label: 'Custom Apparel', href: '/categories/custom-apparel' },
+      { label: 'Performance Sportswear', href: '/categories/custom-apparel' },
     ],
   },
   {
@@ -102,8 +101,7 @@ export const FOOTER_NAV = {
       { label: 'Protective Gear', href: '/categories/protective-gear' },
       { label: 'Balls', href: '/categories/balls' },
       { label: 'Accessories', href: '/categories/accessories' },
-      { label: 'Teamwear', href: '/categories/teamwear' },
-      { label: 'Custom Apparel', href: '/categories/custom-apparel' },
+      { label: 'Performance Sportswear', href: '/categories/custom-apparel' },
     ],
   },
   company: {
@@ -149,9 +147,9 @@ export const DEFAULT_SITE_SETTINGS = {
   site_tagline: 'Performance, Simplified.',
   site_description: SITE_CONFIG.description,
   contact_email: 'info@mantrasports.ca',
-  contact_phone: 'TO_BE_PROVIDED',
+  contact_phone: '+1 (385) 601-3759',
   contact_address: 'TO_BE_PROVIDED',
-  whatsapp_number: 'TO_BE_PROVIDED',
+  whatsapp_number: '+12679016382',
   social_instagram: '',
   social_facebook: '',
   social_linkedin: '',

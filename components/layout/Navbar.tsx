@@ -64,13 +64,12 @@ export function Navbar({ freeShippingThreshold = '150' }: { freeShippingThreshol
         style={{ background: '#111111' }}
         className="py-[9px] px-4 text-center text-[12px] font-medium tracking-[0.08em] text-white"
       >
-        🏏 Free Shipping over ${freeShippingThreshold} &nbsp;|&nbsp; Code{' '}
-        <strong>WELCOME5</strong> for 5% off
+        🏏 Wholesale &amp; club pricing for Canadian teams, academies and retailers
         <Link
-          href="/shop"
+          href="/wholesale"
           className="ml-2 text-[#e85d1a] hover:underline"
         >
-          Shop Now →
+          Request a Quote →
         </Link>
       </div>
 

@@ -2,6 +2,8 @@ import type { MetadataRoute } from 'next'
 import { prisma } from '@/lib/db/prisma'
 import { SITE_CONFIG } from '@/lib/config/site'
 
+export const revalidate = 86400
+
 const STATIC_ROUTES = [
   '', 'shop', 'collections', 'wholesale', 'b2b', 'become-a-dealer',
   'about', 'blog', 'contact', 'faq', 'shipping-policy', 'returns-policy',

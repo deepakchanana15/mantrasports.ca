@@ -1,3 +1,4 @@
+import { SITE_CONFIG } from '@/lib/config/site'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -22,6 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: p.metaTitle ?? p.name,
       description: p.metaDescription ?? p.description?.slice(0, 160) ?? undefined,
+      alternates: { canonical: `/shop/${slug}` },
     }
   } catch {
     return {}
@@ -81,8 +83,21 @@ export default async function ProductDetailPage({ params }: Props) {
   const whatsappUrl = getProductWhatsAppUrl(product.name)
   const contactUrl = `/contact?product=${product.slug}&type=quote`
 
+  const productJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    url: `${SITE_CONFIG.url}/shop/${product.slug}`,
+    ...(product.sku ? { sku: product.sku } : {}),
+    ...(product.description ? { description: product.description.slice(0, 500) } : {}),
+    ...(product.images?.length ? { image: product.images.map((i: { url: string }) => i.url) } : {}),
+    ...(product.category ? { category: product.category.name } : {}),
+    brand: { '@type': 'Brand', name: 'Mantra Sports' },
+  }
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }} />
       <div style={{ maxWidth: 1440, margin: '0 auto', padding: '40px 60px 80px' }}>
         {/* Breadcrumb */}
         <nav className="mb-8 flex items-center gap-1.5 text-xs text-[#999]">

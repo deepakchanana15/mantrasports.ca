@@ -26,20 +26,20 @@ export const metadata: Metadata = {
     template: SITE_CONFIG.seo.titleTemplate,
   },
   description: SITE_CONFIG.seo.defaultDescription,
+  alternates: { canonical: '/' },
   keywords: [
+    'wholesale cricket equipment Canada',
     'cricket bats Canada',
-    'buy cricket equipment',
+    'cricket club equipment supplier',
+    'B2B cricket gear',
+    'cricket academy equipment',
+    'English willow cricket bats',
+    'cricket performance sportswear',
     'Mantra Sports',
-    'cricket protective gear',
-    'cricket teamwear wholesale',
-    'custom cricket apparel',
-    'cricket balls',
-    'cricket bats Toronto',
-    'cricket equipment CA',
   ],
-  authors: [{ name: 'Mantra Sports CA' }],
-  creator: 'Mantra Sports CA',
-  publisher: 'Mantra Sports CA',
+  authors: [{ name: 'Mantra Sports' }],
+  creator: 'Mantra Sports',
+  publisher: 'Mantra Sports',
   robots: {
     index: true,
     follow: true,
@@ -90,6 +90,43 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className={`${inter.variable} ${oswald.variable} antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@graph': [
+                {
+                  '@type': 'Organization',
+                  '@id': `${SITE_CONFIG.url}/#organization`,
+                  name: 'Mantra Sports',
+                  url: SITE_CONFIG.url,
+                  logo: `${SITE_CONFIG.url}/images/og-default.jpg`,
+                  description:
+                    'Mantra Sports supplies premium cricket bats, protective gear, balls, performance sportswear and accessories. This site handles wholesale and B2B enquiries from clubs, academies, schools and retailers in Canada.',
+                  areaServed: { '@type': 'Country', name: 'Canada' },
+                  sameAs: ['https://mantrasports.com.au', 'https://www.mantrasportsusa.com'],
+                  contactPoint: {
+                    '@type': 'ContactPoint',
+                    contactType: 'sales',
+                    email: SITE_CONFIG.contact.email,
+                    telephone: '+1-385-601-3759',
+                    areaServed: 'CA',
+                    availableLanguage: ['English'],
+                  },
+                },
+                {
+                  '@type': 'WebSite',
+                  '@id': `${SITE_CONFIG.url}/#website`,
+                  url: SITE_CONFIG.url,
+                  name: 'Mantra Sports Canada',
+                  inLanguage: 'en-CA',
+                  publisher: { '@id': `${SITE_CONFIG.url}/#organization` },
+                },
+              ],
+            }),
+          }}
+        />
         <ThemeProvider>
           {children}
         </ThemeProvider>

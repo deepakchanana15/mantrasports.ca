@@ -7,7 +7,7 @@ import { getSiteSettings } from '@/lib/utils/settings'
 export const metadata: Metadata = {
   title: 'Mantra Sports CA — Premium Cricket Equipment',
   description:
-    'Premium cricket bats, protective gear, teamwear and accessories at Mantra Sports Canada. Wholesale & B2B enquiries welcome.',
+    'Wholesale cricket equipment for Canadian clubs, academies, schools and retailers: English willow bats, pads, gloves, helmets, balls and performance sportswear. Request a B2B quote.',
 }
 
 function toDisplay(p: {

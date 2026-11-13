@@ -85,7 +85,7 @@ export function Footer({ contactEmail }: { contactEmail?: string }) {
             className="mb-6 max-w-[280px] text-[14px] leading-relaxed"
             style={{ color: '#A0A0A0' }}
           >
-            Premium cricket bats, protective gear, teamwear and accessories.
+            Wholesale cricket bats, protective gear, performance sportswear and accessories for Canadian clubs and retailers.
             Performance for champions at every level.
           </p>
 
