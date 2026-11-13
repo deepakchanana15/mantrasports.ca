@@ -30,7 +30,7 @@ export const SITE_CONFIG = {
     titleTemplate: '%s | Mantra Sports CA',
     defaultTitle: 'Wholesale Cricket Equipment Canada | Mantra Sports',
     defaultDescription:
-      'Wholesale cricket equipment for Canadian clubs, academies, schools and retailers: English willow bats, pads, gloves, helmets, balls and performance sportswear. Request a B2B quote.',
+      'Wholesale cricket equipment for Canadian clubs, academies, schools and retailers: English willow bats, protective gear, balls and sportswear. Request a quote.',
     defaultOgImage: '/images/og-default.jpg',
     twitterHandle: '@mantrasports',
   },

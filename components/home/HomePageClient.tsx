@@ -85,7 +85,6 @@ const CATEGORIES = [
   { name: 'Balls', slug: 'balls', emoji: '🔴', href: '/categories/balls' },
   { name: 'Protective Gear', slug: 'protective-gear', emoji: '🛡️', href: '/categories/protective-gear' },
   { name: 'Gloves', slug: 'accessories', emoji: '🧤', href: '/categories/accessories' },
-  { name: 'Sports Bags', slug: 'sports-bags', emoji: '🎒', href: '/categories/sports-bags' },
   { name: 'Performance Sportswear', slug: 'custom-apparel', emoji: '👕', href: '/categories/custom-apparel' },
 ]
 
@@ -108,11 +107,6 @@ function getWhyItems(freeShippingThreshold: string) {
   ]
 }
 
-const REVIEWS = [
-  { name: 'Rahul M.', location: 'Toronto, ON', rating: 5, text: 'Absolutely impressive quality! The Magnitude Legend plays like a professional-grade bat. Delivery was fast and the packaging was perfect. Highly recommend!', product: 'Magnitude Legend Bat' },
-  { name: 'Priya S.', location: 'Vancouver, BC', rating: 5, text: 'Finally a Canadian home for cricket gear! The Raptor gloves fit perfectly and the quality is world-class. I will definitely be ordering again.', product: 'Raptor Batting Gloves' },
-  { name: 'Arjun K.', location: 'Calgary, AB', rating: 5, text: 'As team captain I order regularly for our squad. Mantra Sports CA is reliable, the wholesale pricing is fair, and the service is excellent.', product: 'Team Order — Protective Gear' },
-]
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -284,7 +278,7 @@ export function HomePageClient({ heroImageUrl, heroProduct, willowImageUrl, cate
   function getTabCards(tab: string): CardProduct[] {
     const dbList = tabProducts[tab as keyof typeof tabProducts]
     if (dbList && dbList.length > 0) return dbList.map((p) => dbToCard(p, tab))
-    return PLACEHOLDER_PRODUCTS.filter((p) => p.tab === tab).map(placeholderToCard)
+    return []
   }
 
   const filteredProducts = getTabCards(activeTab)
@@ -576,30 +570,6 @@ export function HomePageClient({ heroImageUrl, heroProduct, willowImageUrl, cate
               </div>
               <h3 className="mb-3 font-display text-[18px] font-semibold uppercase tracking-[0.04em]" style={{ color: '#111111' }}>{item.title}</h3>
               <p className="text-[14px] leading-relaxed" style={{ color: '#6B6B6B' }}>{item.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════════
-          REVIEWS
-      ══════════════════════════════════════════════════════════════ */}
-      <section aria-labelledby="reviews-heading" style={{ padding: '80px 60px', background: '#F8F7F4', borderBottom: '1px solid #E0DFDB' }}>
-        <div className="mb-12 text-center">
-          <p className="mb-2 font-display text-[11px] font-semibold uppercase tracking-[0.22em]" style={{ color: '#e85d1a' }}>Customer Reviews</p>
-          <h2 id="reviews-heading" className="font-display font-bold uppercase leading-tight tracking-[0.01em]" style={{ fontSize: 'clamp(34px, 4vw, 52px)', color: '#111111' }}>What Our Customers Say</h2>
-        </div>
-        <div className="grid" style={{ gridTemplateColumns: 'repeat(3, 1fr)', border: '1px solid #E0DFDB' }}>
-          {REVIEWS.map((review, i) => (
-            <div key={review.name} className="flex flex-col bg-white" style={{ padding: '36px 32px', borderRight: i < REVIEWS.length - 1 ? '1px solid #E0DFDB' : 'none' }}>
-              <Quote className="mb-4 h-8 w-8" style={{ color: '#E0DFDB' }} aria-hidden="true" />
-              <div className="mb-4"><StarRating rating={review.rating} /></div>
-              <p className="mb-6 flex-1 text-[14px] leading-[1.75]" style={{ color: '#333333' }}>&quot;{review.text}&quot;</p>
-              <div style={{ borderTop: '1px solid #F2F1EE', paddingTop: '16px' }}>
-                <p className="font-display text-[15px] font-semibold uppercase tracking-[0.04em]" style={{ color: '#111111' }}>{review.name}</p>
-                <p className="text-[12px]" style={{ color: '#6B6B6B' }}>{review.location}</p>
-                <p className="mt-1 text-[11px] font-medium uppercase tracking-wider" style={{ color: '#e85d1a' }}>{review.product}</p>
-              </div>
             </div>
           ))}
         </div>

@@ -5,9 +5,9 @@ import type { CategoryDisplay, ProductDisplay, HeroProduct } from '@/components/
 import { getSiteSettings } from '@/lib/utils/settings'
 
 export const metadata: Metadata = {
-  title: 'Mantra Sports CA — Premium Cricket Equipment',
+  title: { absolute: 'Wholesale Cricket Equipment Canada | Mantra Sports' },
   description:
-    'Wholesale cricket equipment for Canadian clubs, academies, schools and retailers: English willow bats, pads, gloves, helmets, balls and performance sportswear. Request a B2B quote.',
+    'Wholesale cricket equipment for Canadian clubs, academies, schools and retailers: English willow bats, protective gear, balls and sportswear. Request a quote.',
 }
 
 function toDisplay(p: {
