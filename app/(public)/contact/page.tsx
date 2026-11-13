@@ -166,7 +166,7 @@ export default async function ContactPage() {
                       Phone
                     </p>
                     <a
-                      href={`tel:${phone}`}
+                      href={`tel:${phone.replace(/[^\d+]/g, "")}`}
                       className="font-display text-[15px] font-semibold transition-colors hover:text-[#e85d1a]"
                       style={{ color: '#111111' }}
                     >
