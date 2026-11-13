@@ -319,7 +319,7 @@ export function HomePageClient({ heroImageUrl, heroProduct, willowImageUrl, cate
             <Link href="/shop" className="inline-flex items-center gap-2 rounded-[2px] font-display text-[15px] font-medium uppercase tracking-[0.1em] text-white transition-colors" style={{ background: '#e85d1a', padding: '16px 36px', border: '2px solid #e85d1a' }}
               onMouseEnter={(e) => { e.currentTarget.style.background = '#c44b0f'; e.currentTarget.style.borderColor = '#c44b0f' }}
               onMouseLeave={(e) => { e.currentTarget.style.background = '#e85d1a'; e.currentTarget.style.borderColor = '#e85d1a' }}>
-              Shop Now <ArrowRight className="h-4 w-4" />
+              View Range <ArrowRight className="h-4 w-4" />
             </Link>
             <Link href="/contact" className="inline-flex items-center gap-2 rounded-[2px] font-display text-[15px] font-medium uppercase tracking-[0.1em] transition-colors" style={{ color: '#111111', padding: '15px 36px', border: '2px solid #111111', background: 'transparent' }}
               onMouseEnter={(e) => { e.currentTarget.style.background = '#111111'; e.currentTarget.style.color = '#ffffff' }}
@@ -329,7 +329,7 @@ export function HomePageClient({ heroImageUrl, heroProduct, willowImageUrl, cate
           </div>
 
           <div className="flex" style={{ borderTop: '1px solid #E0DFDB' }}>
-            {[{ num: 'B2B', label: 'Wholesale Only' }, { num: 'Grade I–III', label: 'English Willow' }, { num: 'Bulk', label: 'Club Pricing' }].map((stat, i) => (
+            {[{ num: 'B2B', label: 'Wholesale Only' }, { num: 'Players’–Gr III', label: 'English Willow' }, { num: 'Bulk', label: 'Club Pricing' }].map((stat, i) => (
               <div key={stat.num} className="flex-1 pt-6" style={{ borderRight: i < 2 ? '1px solid #E0DFDB' : 'none', paddingRight: i < 2 ? '24px' : '0', paddingLeft: i > 0 ? '24px' : '0' }}>
                 <div className="font-display text-[32px] font-semibold leading-none" style={{ color: '#e85d1a' }}>{stat.num}</div>
                 <div className="mt-1 text-[11px] font-medium uppercase tracking-[0.12em]" style={{ color: '#6B6B6B' }}>{stat.label}</div>
@@ -543,7 +543,7 @@ export function HomePageClient({ heroImageUrl, heroProduct, willowImageUrl, cate
               Crafted from the finest English willow — every bat a unique piece. Hand-selected grain, hand-shaped blade, professional performance.
             </p>
             <ul className="mb-8 space-y-3">
-              {['English Willow Grade I–III', 'Hand-shaped blade profiling', 'Professionally knocked-in & oiled', 'Individual weight & grip selection'].map((feat) => (
+              {['English Willow Players’ Grade to Grade III', 'Hand-shaped blade profiling', 'Professionally knocked-in & oiled', 'Individual weight & grip selection'].map((feat) => (
                 <li key={feat} className="flex items-start gap-3 text-[14px]" style={{ color: '#A0A0A0' }}>
                   <ChevronRight className="mt-0.5 h-4 w-4 shrink-0" style={{ color: '#e85d1a' }} />{feat}
                 </li>

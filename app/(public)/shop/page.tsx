@@ -75,6 +75,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
 
   const totalPages = Math.ceil(total / PER_PAGE)
   const activeLabel =
+    (activeCategory === 'custom-apparel' ? 'Performance Sportswear' : undefined) ??
     categories.find((c) => c.slug === activeCategory)?.name ??
     DEFAULT_CATEGORIES.find((c) => c.slug === activeCategory)?.name
 
@@ -140,7 +141,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
               >
                 All
               </Link>
-              {(categories.length > 0 ? categories : Array.from(DEFAULT_CATEGORIES)).map((cat) => (
+              {(categories.length > 0 ? categories : Array.from(DEFAULT_CATEGORIES)).filter((cat) => cat.slug !== 'teamwear').map((cat) => (
                 <Link
                   key={cat.slug}
                   href={buildUrl({ category: cat.slug, sort, q })}
@@ -150,7 +151,7 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
                       : 'border-transparent text-[#666] hover:text-[#111]'
                   }`}
                 >
-                  {cat.name}
+                  {cat.slug === 'custom-apparel' ? 'Performance Sportswear' : cat.name}
                 </Link>
               ))}
             </div>

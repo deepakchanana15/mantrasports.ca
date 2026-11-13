@@ -64,7 +64,7 @@ export default function AboutPage() {
         <p className="mb-6 text-[16px] leading-[1.9]" style={{ color: '#333333' }}>
           Mantra Sports brings genuine English willow cricket bats, protective gear, balls and performance sportswear to clubs
           across Canada — from weekend club cricketers to school and university teams building out a full kit
-          order. We work directly with experienced bat makers to source Grade I–III English willow, so every bat
+          order. We work directly with experienced bat makers to source Players’ Grade to Grade III English willow, so every bat
           that reaches a Canadian crease has been hand-selected and finished properly, not mass-produced.
         </p>
         <p className="mb-6 text-[16px] leading-[1.9]" style={{ color: '#333333' }}>

@@ -78,12 +78,16 @@
 }
 
 /* ── Base Reset ──────────────────────────────────────────────── */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* Must live in @layer base: unlayered rules beat Tailwind v4 utilities,
+   which previously zeroed every p-*, m-*, px-* class sitewide. */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 }
 
 html {

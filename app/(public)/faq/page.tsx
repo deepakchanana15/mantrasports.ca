@@ -22,7 +22,7 @@ function buildFaqs(settings: {
       items: [
         {
           q: 'What grade of English willow do you use?',
-          a: 'Our premium range uses Grade I–III English willow, hand-selected and finished by experienced bat makers. Grade and finish details are listed on each product page.',
+          a: 'Our premium range uses Players’ Grade to Grade III English willow, hand-selected and finished by experienced bat makers. Grade and finish details are listed on each product page.',
         },
         {
           q: 'Do you sell Kashmir willow bats too?',
