@@ -73,7 +73,7 @@ function HeroImageField({ currentUrl, disabled }: { currentUrl: string; disabled
 const FIELDS = [
   { section: 'Branding', items: [
     { key: 'site_name',    label: 'Site Name',    type: 'text',     placeholder: 'Mantra Sports CA' },
-    { key: 'site_tagline', label: 'Tagline',      type: 'text',     placeholder: 'Performance, Simplified.' },
+    { key: 'site_tagline', label: 'Tagline',      type: 'text',     placeholder: 'Performance. Got. Simplified.' },
   ]},
   { section: 'Contact', items: [
     { key: 'contact_email',   label: 'Contact Email',   type: 'email',  placeholder: 'info@mantrasports.ca' },

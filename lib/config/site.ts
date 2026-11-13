@@ -3,7 +3,7 @@ import type { NavItem } from '@/types'
 // ─── Core Site Configuration ─────────────────────────────────────────────────
 export const SITE_CONFIG = {
   name: 'Mantra Sports CA',
-  tagline: 'Performance, Simplified.',
+  tagline: 'Performance. Got. Simplified.',
   description:
     'Mantra Sports Canada — wholesale and B2B supply of premium cricket bats, protective gear, balls, performance sportswear and accessories for Canadian clubs, academies, schools and retailers.',
   url: 'https://www.mantrasports.ca',
@@ -144,7 +144,7 @@ export const DEFAULT_CATEGORIES = [
 export const DEFAULT_SITE_SETTINGS = {
   hero_image_url: '',
   site_name: 'Mantra Sports CA',
-  site_tagline: 'Performance, Simplified.',
+  site_tagline: 'Performance. Got. Simplified.',
   site_description: SITE_CONFIG.description,
   contact_email: 'info@mantrasports.ca',
   contact_phone: '+1 (385) 601-3759',
