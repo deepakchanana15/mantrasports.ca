@@ -23,6 +23,7 @@ export function WholesaleForm({ responseTimeHours = '24' }: { responseTimeHours?
   const [success, setSuccess] = useState(false)
   const [error, setError] = useState('')
   const [selected, setSelected] = useState<string[]>([])
+  const [brochureUrls, setBrochureUrls] = useState<string[]>([])
 
   const toggle = (item: string) =>
     setSelected((prev) => (prev.includes(item) ? prev.filter((x) => x !== item) : [...prev, item]))
@@ -42,6 +43,7 @@ export function WholesaleForm({ responseTimeHours = '24' }: { responseTimeHours?
     const result = await submitEnquiry(fd)
     if (result.ok) {
       setSuccess(true)
+      setBrochureUrls(result.brochureUrls ?? [])
     } else {
       setError(result.error ?? 'Something went wrong. Please try again.')
     }
@@ -58,6 +60,22 @@ export function WholesaleForm({ responseTimeHours = '24' }: { responseTimeHours?
         <p className="max-w-[360px] text-[15px] leading-relaxed" style={{ color: '#6B6B6B' }}>
           Thanks for your wholesale enquiry. We typically follow up by email or phone within {responseTimeHours} hours.
         </p>
+        {brochureUrls.length > 0 && (
+          <a
+            href={brochureUrls[0]}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex items-center gap-2 rounded-[2px] font-display text-[13px] font-bold uppercase tracking-[0.1em] text-white transition-colors"
+            style={{ background: '#e85d1a', padding: '14px 28px' }}
+          >
+            Download Brochure <ArrowRight className="h-4 w-4" />
+          </a>
+        )}
+        {brochureUrls.length > 0 && (
+          <p className="mt-3 text-[12px]" style={{ color: '#A0A0A0' }}>
+            We&apos;ve also emailed you a copy.
+          </p>
+        )}
         <p className="mt-4 font-display text-[13px] font-semibold uppercase tracking-wider" style={{ color: '#e85d1a' }}>
           Mantra Sports CA Team
         </p>
