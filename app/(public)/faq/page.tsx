@@ -1,96 +1,50 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ChevronRight, ChevronDown } from 'lucide-react'
-import { getSiteSettings } from '@/lib/utils/settings'
+import { FAQSchema } from '@/components/seo/JsonLd'
 
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-  title: 'FAQ — Mantra Sports CA',
-  description: 'Answers to common questions about ordering, shipping, returns and wholesale at Mantra Sports Canada.',
+  title: 'FAQ – Wholesale Cricket Equipment Canada',
+  description: 'Answers about wholesale and B2B cricket equipment orders in Canada: quotes, dealers, English willow grades, warranty and contact.',
+  alternates: { canonical: '/faq' },
 }
 
-function buildFaqs(settings: {
-  shipping_processing_time: string
-  shipping_delivery_time: string
-  free_shipping_threshold: string
-  return_window_days: string
-}): { category: string; items: { q: string; a: string }[] }[] {
+function buildFaqs(): { category: string; items: { q: string; a: string }[] }[] {
   return [
     {
-      category: 'Orders & Products',
+      category: 'Ordering',
       items: [
-        {
-          q: 'What grade of English willow do you use?',
-          a: 'Our premium range uses Players’ Grade to Grade III English willow, hand-selected and finished by experienced bat makers. Grade and finish details are listed on each product page.',
-        },
-        {
-          q: 'Do you sell Kashmir willow bats too?',
-          a: 'Yes — alongside our English willow range, we stock Kashmir willow bats for players looking for a more budget-friendly option without sacrificing durability.',
-        },
-        {
-          q: 'Can I get a custom weight or grip on a bat?',
-          a: 'Some bats support custom weight and grip selection at checkout. For fully custom requests, reach out via our Contact page and our team will confirm what’s possible.',
-        },
+        { q: 'Can I order online?', a: 'No. Mantra Sports Canada is a wholesale and B2B site. Send us an enquiry through the wholesale form, by email or on WhatsApp and we reply with a written quote.' },
+        { q: 'Who can order from Mantra Sports Canada?', a: 'Cricket clubs, academies, schools, universities and retailers in Canada, including full-squad team orders.' },
+        { q: 'How quickly will I get a quote?', a: 'Usually within one business day. The quote lists products, quantities, prices, shipping and the expected delivery time.' },
+        { q: 'Can I become a dealer?', a: 'Yes. Apply through the Become a Dealer page and we will get back to you with dealer pricing and terms.' },
       ],
     },
     {
-      category: 'Shipping',
+      category: 'Products',
       items: [
-        {
-          q: 'How long does delivery take?',
-          a: `Most orders ship within ${settings.shipping_processing_time} and arrive within ${settings.shipping_delivery_time} depending on your location in Canada. See our Shipping Policy for full details.`,
-        },
-        {
-          q: 'Do you offer free shipping?',
-          a: `Yes — orders over $${settings.free_shipping_threshold} CAD ship free within Canada. Orders under that threshold have a flat shipping rate calculated at checkout.`,
-        },
-        {
-          q: 'Do you ship outside Canada?',
-          a: 'We currently focus on Canada-wide delivery. If you need equipment shipped internationally, contact us and we’ll see what we can arrange.',
-        },
+        { q: 'What grade of English willow do you use?', a: 'Our English willow bats range from Players’ Grade, the top grade, through Grade I and Grade II to Grade III, across the Magnitude, Raptor and Cobra ranges.' },
+        { q: 'What else do you supply?', a: 'Batting and wicket-keeping gloves, leg guards, thigh guards, helmets, leather balls in red, white, pink and yellow, performance sportswear for teams, and accessories such as grips, kit bags and stumps.' },
+        { q: 'What if a product has a manufacturing defect?', a: 'We replace items with manufacturing defects. Contact us with photos and your order details.' },
       ],
     },
     {
-      category: 'Returns & Warranty',
+      category: 'Contact',
       items: [
-        {
-          q: 'What is your return policy?',
-          a: `We offer a ${settings.return_window_days}-day return policy on unused items in original condition. See our Returns Policy page for the full process and exceptions.`,
-        },
-        {
-          q: 'What if my bat arrives damaged?',
-          a: 'Contact us within 48 hours of delivery with photos of the damage and we’ll arrange a replacement or refund at no cost to you.',
-        },
-      ],
-    },
-    {
-      category: 'Wholesale & Teams',
-      items: [
-        {
-          q: 'Do you offer wholesale pricing for clubs and schools?',
-          a: 'Yes — we work with cricket clubs, schools, academies and retailers on volume pricing. Visit our Wholesale page to submit an enquiry.',
-        },
-        {
-          q: 'Can you supply custom team apparel?',
-          a: 'Yes, custom apparel with team branding is available for bulk orders. Let us know your requirements through the wholesale enquiry form.',
-        },
+        { q: 'How do I contact Mantra Sports?', a: 'Phone +1 (385) 601-3759, WhatsApp +1 (267) 901-6382, or use the contact and wholesale forms on this site.' },
       ],
     },
   ]
 }
 
 export default async function FaqPage() {
-  const settings = await getSiteSettings([
-    'shipping_processing_time',
-    'shipping_delivery_time',
-    'free_shipping_threshold',
-    'return_window_days',
-  ])
-  const FAQS = buildFaqs(settings)
+  const FAQS = buildFaqs()
 
   return (
     <div className="bg-white">
+      <FAQSchema items={FAQS.flatMap((s) => s.items.map((i) => ({ question: i.q, answer: i.a })))} />
       {/* Breadcrumb */}
       <div style={{ borderBottom: '1px solid #E0DFDB', padding: '12px 60px', background: '#F8F7F4' }}>
         <nav className="flex items-center gap-2 text-[12px]" style={{ color: '#6B6B6B' }}>
