@@ -8,4 +8,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - run: |
-          for u in https://deepakchanana.com/ https://deepakchanana.com/robots.txt https://deepakchanana.com/sitemap.xml https://deepakchanana.com/sitemap_index.xml https://www.deepakchanana.com/; do echo "=== $u"; curl -sSL -o /tmp/b -w "status=%{http_code} final=%{url_effective} type=%{content_type}\n" "$u"; head -c 600 /tmp/b; echo; done
+          curl -sSI https://deepakchanana.com/ | grep -iE "^(server|x-vercel|x-served|via|x-github|x-firebase|cf-ray|x-nf|platform|x-powered)" || true
+          curl -sS https://deepakchanana.com/ | md5sum
+          curl -sS https://raw.githubusercontent.com/deepakchanana15/Deepak-Chanana/main/index.html | md5sum
+          dig +short deepakchanana.com A; dig +short deepakchanana.com NS
