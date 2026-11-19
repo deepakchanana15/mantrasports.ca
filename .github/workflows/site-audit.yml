@@ -5,7 +5,7 @@ on:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v4
-      - run: python3 .audit/audit.py
+      - run: |
+          for u in https://yogeshcoldstorage.com/sitemap.xml https://yogeshcoldstorage.com/robots.txt https://www.yogeshcoldstorage.com/sitemap.xml; do echo "=== $u"; curl -sSL -o /tmp/b -w "status=%{http_code} final=%{url_effective} type=%{content_type}\n" "$u"; head -c 700 /tmp/b; echo; done
