@@ -8,4 +8,4 @@ jobs:
     timeout-minutes: 10
     steps:
       - run: |
-          for u in https://yogeshcoldstorage.com/sitemap.xml https://yogeshcoldstorage.com/robots.txt https://www.yogeshcoldstorage.com/sitemap.xml; do echo "=== $u"; curl -sSL -o /tmp/b -w "status=%{http_code} final=%{url_effective} type=%{content_type}\n" "$u"; head -c 700 /tmp/b; echo; done
+          for u in https://www.mantrasports.ca/robots.txt; do echo "=== $u"; curl -sSL -o /tmp/b -w "status=%{http_code} final=%{url_effective} type=%{content_type}\n" "$u"; tail -c 400 /tmp/b; echo; done
