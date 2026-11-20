@@ -5,10 +5,8 @@ on:
 jobs:
   audit:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
-      - run: |
-          curl -sSI https://deepakchanana.com/ | grep -iE "^(server|x-vercel|x-served|via|x-github|x-firebase|cf-ray|x-nf|platform|x-powered)" || true
-          curl -sS https://deepakchanana.com/ | md5sum
-          curl -sS https://raw.githubusercontent.com/deepakchanana15/Deepak-Chanana/main/index.html | md5sum
-          dig +short deepakchanana.com A; dig +short deepakchanana.com NS
+      - uses: actions/checkout@v4
+      - run: python3 .audit/audit.py
+      - run: for u in https://www.mantrasports.co.uk/robots.txt https://www.mantrasports.uk/robots.txt; do echo "=== $u"; curl -sSL -m 20 "$u" | head -c 500; echo; done

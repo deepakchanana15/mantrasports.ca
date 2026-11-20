@@ -26,11 +26,13 @@ def ld_types(html):
 def meta(html,name):
     m=re.search(r'<meta[^>]+(?:name|property)=["\']%s["\'][^>]*content=["\']([^"\']*)'%name,html,re.I) or re.search(r'<meta[^>]+content=["\']([^"\']*)["\'][^>]*(?:name|property)=["\']%s["\']'%name,html,re.I)
     return m.group(1).strip() if m else ''
-SITES=[('AU','https://mantrasports.com.au/',['/faq/']),('USA','https://mantrasportsusa.com/',['/pages/faq']),('CA','https://www.mantrasports.ca/',['/faq']),('NL','https://www.mantrasports.nl/',['/faq']),('DE','https://www.mantrasports.de/',['/faq']),('India','https://www.mantrasports.co.in/',['/faq'])]
+SITES=[("UK-couk","https://www.mantrasports.co.uk/",["/faq"]),("UK-uk","https://www.mantrasports.uk/",["/faq"])]
 out=[]
 for name,home,faqs in SITES:
     R={'site':name,'url':home,'notes':[]}; S={}
     st,final,h=get(home)
+    if st==0 or st>=400:
+        print(name,'UNREACHABLE',st,h[:80],flush=True); continue
     R['home_status']=st; R['final']=final
     title=(re.search(r'<title[^>]*>(.*?)</title>',h,re.S|re.I) or [None,''])[1].strip() if h else ''
     title=re.sub(r'\s+',' ',title)
