@@ -26,7 +26,7 @@ def ld_types(html):
 def meta(html,name):
     m=re.search(r'<meta[^>]+(?:name|property)=["\']%s["\'][^>]*content=["\']([^"\']*)'%name,html,re.I) or re.search(r'<meta[^>]+content=["\']([^"\']*)["\'][^>]*(?:name|property)=["\']%s["\']'%name,html,re.I)
     return m.group(1).strip() if m else ''
-SITES=[("UK-couk","https://www.mantrasports.co.uk/",["/faq"]),("UK-uk","https://www.mantrasports.uk/",["/faq"])]
+SITES=[("UK","https://www.mantrasports.uk/",["/faq"])]
 out=[]
 for name,home,faqs in SITES:
     R={'site':name,'url':home,'notes':[]}; S={}
